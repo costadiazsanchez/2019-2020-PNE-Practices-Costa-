@@ -12,7 +12,7 @@ s.connect((IP, PORT))
 
 # Send data. No strings can be send, only bytes
 # It necesary to encode the string into bytes
-s.send(str.encode("Viva Vox"))
+s.send(str.encode(""))
 
 msg = s.recv(2000)
 print("MESSAGE FROM THE SERVER:\n")
