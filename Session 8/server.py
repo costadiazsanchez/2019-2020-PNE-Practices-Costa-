@@ -1,6 +1,7 @@
 # Modified from the Session 8 class.
 
 import socket
+import termcolor
 
 PORT = 8080
 IP = '212.128.253.130'
@@ -25,10 +26,11 @@ try:
         print("CONNECTION: {}. From the IP: {}".format(number_con, address))
 
         # Read the message from the client, if any
-        msg = clientsocket.recv(2048).decode("utf-8")
-        print("Message from client: {}".format(msg))
+        msg = clientsocket.recv(2048).decode('utf-8')
+        print("Message from client: ")
+        termcolor.cprint(format(msg), 'blue')
 
-        # Send the messag
+        # Send the message
         message = "Hello from the teacher's server"
         send_bytes = str.encode(message)
         # We must write bytes, not a string
