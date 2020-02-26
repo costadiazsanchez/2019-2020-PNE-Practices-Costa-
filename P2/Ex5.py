@@ -18,8 +18,5 @@ c = Client(IP, PORT)
 print(c)
 
 seq = Seq().read_fasta(location)
-c.debug_talk("Gene", gene, "to the server")
+c.debug_talk(f"Gene {gene} to the server")
 c.debug_talk(str(seq))
-
-
-
