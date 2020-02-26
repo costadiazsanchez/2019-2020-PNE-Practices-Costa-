@@ -1,7 +1,7 @@
 from pathlib import Path
 
 def seq_ping():
-    print("OK")
+    print("OK!")
 
 def seq_read_fasta (filename):
     lines = Path(filename).read_text()
