@@ -12,5 +12,5 @@ def fib (n):
     return (x)
 
 print ("5th Fibonacci term: ", fib (5))
-print ("10th FIbonacci term: ", fib (10))
+print ("10th Fibonacci term: ", fib (10))
 print ("15th Fibonacci term: ", fib (15))
