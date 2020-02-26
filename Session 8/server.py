@@ -1,9 +1,9 @@
-##Modified from the Session 8 class.
+# Modified from the Session 8 class.
 
 import socket
 
 PORT = 8080
-IP = '212.128.253.147'
+IP = '212.128.253.130'
 MAX_OPEN_REQUESTS = 50
 number_con = 0
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
