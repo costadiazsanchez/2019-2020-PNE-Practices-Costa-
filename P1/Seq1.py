@@ -9,7 +9,7 @@ class Seq:
         else:
             for i in strbases:
                 if i not in base:
-                    print("Invalid!")
+                    print("Invalid")
                     self.strbases = "ERROR!"
                     return
             self.strbases = strbases
