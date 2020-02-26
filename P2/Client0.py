@@ -38,7 +38,7 @@ class Client:
         print("To server: ")
         termcolor.cprint(message, 'red')
         print("From server: ")
-        termcolor.cprint(msg, 'yellow')
+        termcolor.cprint(msg, 'green')
 
 
 
