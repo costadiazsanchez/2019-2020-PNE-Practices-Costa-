@@ -3,8 +3,8 @@
 import socket
 import termcolor
 
-PORT = 8080
-IP = '212.128.253.130'
+PORT = 8081
+IP = '192.168.0.13'
 MAX_OPEN_REQUESTS = 50
 number_con = 0
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
