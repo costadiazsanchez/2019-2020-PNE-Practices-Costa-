@@ -4,7 +4,7 @@ class Seq:
         for i in strbases:
             if i not in base:
                 print("ERROR!")
-                self.strbases = "ERROR"
+                self.strbases = "ERROR."
                 return
         self.strbases = strbases
         print("New sequence created.")
