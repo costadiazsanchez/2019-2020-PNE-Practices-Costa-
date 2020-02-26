@@ -1,7 +1,9 @@
 from pathlib import Path
 
+
 class Seq:
-    def __init__(self, strbases):
+    NULL = 'NULL'
+    def __init__(self, strbases=NULL):
         base = ["A", 'C', 'G', 'T']
         if strbases == '':
             print("NULL SEQUENCE.")
@@ -9,12 +11,11 @@ class Seq:
         else:
             for i in strbases:
                 if i not in base:
-                    print("Invalid")
+                    print("Invalid sequence.")
                     self.strbases = "ERROR!"
                     return
             self.strbases = strbases
             print("New sequence created.")
-
 
     def __str__(self):
         return self.strbases
@@ -56,9 +57,8 @@ class Seq:
     def read_fasta(self, filename):
         lines = Path(filename).read_text()
         body = lines.split("\n")[1:]
-        self.strbases =  "".join(body)
+        self.strbases = "".join(body)
         return self
-
 
 
 
