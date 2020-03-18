@@ -39,11 +39,10 @@ def process_client(s):
             response = Path("T.html").read_text()
         elif command2 == '/info/G':
             response = Path("G.html").read_text()
-        if command2 == '/':
+        elif command2 == '/':
             response = Path("index.html").read_text()
         else:
             response = Path("error.html").read_text()
-            code = 404
 
     if code == 200:
         status_str = "OK"
