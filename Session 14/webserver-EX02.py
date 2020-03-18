@@ -4,7 +4,7 @@ import termcolor
 from pathlib import Path
 
 # Define the Server's port
-PORT = 8080
+PORT = 8081
 
 # -- This is for preventing the error: "Port already in use"
 socketserver.TCPServer.allow_reuse_address = True
@@ -15,23 +15,20 @@ socketserver.TCPServer.allow_reuse_address = True
 class TestHandler(http.server.BaseHTTPRequestHandler):
 
     def do_GET(self):
-        """This method is called whenever the client invokes the GET method
-        in the HTTP protocol request"""
-
         # Print the request line
         termcolor.cprint(self.requestline, 'green')
 
         command = self.requestline.split(' ')
         command2 = command[1]
         command2 = command2[1:]
+        output = ''
 
         if command2 == "":
             command2 = 'index.html'
-        if command2 == 'index.html':
-            print ("Main page requested.")
+        try:
             output = Path(command2).read_text()
             code = 200
-        else:
+        except:
             print("ERROR")
             output = Path('error.html').read_text()
             code = 404
@@ -39,7 +36,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
         self.send_response(code)
 
         # Define the content-type header:
-        self.send_header('Content-Type', 'text/plain')
+        self.send_header('Content-Type', 'text/html')
         self.send_header('Content-Length', len(output.encode()))
 
         # The header is finished
