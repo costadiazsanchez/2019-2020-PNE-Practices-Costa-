@@ -7,7 +7,7 @@ from Seq1 import Seq
 # Define the Server's port
 PORT = 8080
 sequence = ['AAAAAAAAAAAAAAAA', 'GGGGGGGGGGGGGGG','TTTTTTTTTTTTTTT', 'CCCCCCCCCCCCCCCCCCC', 'ACGTACGTACGTACGT']
-FOLDER = "../Session 4/"
+FOLDER = "../P6/"
 EXT = ".txt"
 
 # -- This is for preventing the error: "Port already in use"
