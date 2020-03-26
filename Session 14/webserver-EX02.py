@@ -30,7 +30,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
             code = 200
         except:
             print("ERROR")
-            output = Path('error.html').read_text()
+            output = Path('Error.html').read_text()
             code = 404
 
         self.send_response(code)

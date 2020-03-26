@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>FORM 1</title>
+  </head>
+  <body>
+  <h1>Seq2 Server</h1>
+    <form action="ping" method="get">
+      Access to the server: <br>
+        <p>---------------</p>
+        <p>Is the server alive?</p>
+        <input type="submit" value="PING"></form>
+        <form action = 'get' method = 'get'>
+        <p>Get a sequence. Select a sequence number:
+        <select name = 'x'>
+            <option value = '0'>0</option>
+            <option value = "1">1</option>
+            <option value = "2">2</option>
+            <option value = "3">3</option>
+            <option value = "4">4</option>
+        </select></p>
+        <input type = "submit" value = "GET">
+    </form>
+    <form action = 'gene' method = 'get'>
+        <p> Get a gene. Select the name:
+            <select name = 'genes'>
+                <option value = 'FRAT1'>FRAT1</option>
+                <option value = "FXN">FXN</option>
+                <option value = "ADA">ADA</option>
+                <option value = "RNU6_269P">RNU6_269P</option>
+                <option value = "U5">U5</option>
+            </select>
+        </p>
+        <input type = 'submit' value = 'GENE'>
+    </form>
+    <form action = 'operation' method = 'get'>
+        <p>Write a sequence: <input type="text" name="w2"></p>
+        <p>Select operation:
+            <input type="radio" name="op" value="Info" checked> Info
+            <input type="radio" name="op" value="Comp"> Comp
+            <input type="radio" name="op" value="Rev"> Rev </p>
+        <p>Perform operation <input type = 'submit' value = 'OPERATION'></p>
+    </form>
+  </body>
+</html>

@@ -29,7 +29,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
             output = Path(command2).read_text()
             code = 200
         except FileNotFoundError:
-            output = Path('error.html').read_text()
+            output = Path('Error.html').read_text()
             code = 404
 
         self.send_response(code)
