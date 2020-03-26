@@ -5,10 +5,6 @@ from pathlib import Path
 
 # Define the Server's port
 PORT = 8080
-sequence = ['AAAAAAAAAAAAAAAA', 'GGGGGGGGGGGGGGG','TTTTTTTTTTTTTTT', 'CCCCCCCCCCCCCCCCCCC', 'ACGTACGTACGTACGT']
-FOLDER = "../Session 4/"
-EXT = ".txt"
-
 
 # -- This is for preventing the error: "Port already in use"
 socketserver.TCPServer.allow_reuse_address = True
