@@ -3,7 +3,7 @@ import termcolor
 from pathlib import Path
 
 # -- Read the json file
-jsonstring = Path("people-2.json.json").read_text()
+jsonstring = Path("people-2.json").read_text()
 
 # Create the object person from the json string
 person = json.loads(jsonstring)
