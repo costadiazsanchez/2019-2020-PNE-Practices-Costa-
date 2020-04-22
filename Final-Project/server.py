@@ -152,13 +152,23 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                         code = 200
 
                     elif first_w in '/geneSeq':  # /sequence/id/ENSG00000157764?content-type=text/plain
-                        endpoint = 'sequence/id/'
+                        auxiliar_endpoint = 'xrefs/symbol/homo_sapiens/'
                         after_int = command2[1]
                         w1, w2 = after_int.split('=')
-                        conn.request("GET", endpoint + w2 + parameters)
+                        conn.request("GET", auxiliar_endpoint + w2 + parameters)
                         r1 = conn.getresponse()
                         data1 = r1.read().decode("utf-8")
-                        console = json.loads(data1)
+                        auxiliar_console = json.loads(data1)
+                        identificator = auxiliar_console[0]
+                        id_gene = identificator['id']
+
+                        endpoint = 'sequence/id/'
+                        conn.request("GET", endpoint + id_gene + parameters)
+                        r2 = conn.getresponse()
+                        data2 = r2.read().decode("utf-8")
+                        console = json.loads(data2)
+
+
                         output = f'''<!DOCTYPE html>
                                <html lang = "en">            
                                <head>  
@@ -167,20 +177,29 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                                  </head>
                                  <body style="background-color: lightblue;">       
                               '''
+                        sequence = f'{console["seq"]}'
                         output += f'<p> The sequence of gene {w2} is:  </p>'
-                        output += f'<textarea rows = "100" "cols = 100"> {console["seq"]} </textarea>'
+                        output += f'<textarea rows = "100" "cols = 100"> {sequence} </textarea>'
                         output += '''<a href="/">Main page</a>
                                       </body>
                                       </html>'''
 
                     elif first_w in '/geneInfo':  # /lookup/id/ENSG00000157764?content-type=text/plain
-                        endpoint = 'lookup/id/'
+                        auxiliar_endpoint = 'xrefs/symbol/homo_sapiens/'
                         after_int = command2[1]
                         w1, w2 = after_int.split('=')
-                        conn.request("GET", endpoint + w2 + parameters)
+                        conn.request("GET", auxiliar_endpoint + w2 + parameters)
                         r1 = conn.getresponse()
                         data1 = r1.read().decode("utf-8")
-                        console = json.loads(data1)
+                        auxiliar_console = json.loads(data1)
+                        identificator = auxiliar_console[0]
+                        id_gene = identificator['id']
+
+                        endpoint = 'lookup/id/'
+                        conn.request("GET", endpoint + id_gene + parameters)
+                        r2 = conn.getresponse()
+                        data2 = r2.read().decode("utf-8")
+                        console = json.loads(data2)
 
                         output = f'''<!DOCTYPE html>
                               <html lang = "en">            
@@ -190,7 +209,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                                 </head>
                                 <body style="background-color: lightblue;"> '''
                         output += f'<p> The gene is on chromosome {console["seq_region_name"]}</p>'
-                        output += f'<p> The gene display name is {console["display_name"]}</p>'
+                        output += f'<p> The identificator is {id_gene}</p>'
                         output += f'<p> The gene start on position {console["start"]}</p>'
                         output += f'<p> The gene ends on position {console["end"]}</p>'
                         output += f'<p> The length of the gene is {console["end"] - console["start"]} </p>'
@@ -199,13 +218,21 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                                      </html>'''
 
                     elif first_w in '/geneCalc':  # /sequence/id/ENSG00000157764?content-type=text/plain
-                        endpoint = 'sequence/id/'
+                        auxiliar_endpoint = 'xrefs/symbol/homo_sapiens/'
                         after_int = command2[1]
                         w1, w2 = after_int.split('=')
-                        conn.request("GET", endpoint + w2 + parameters)
+                        conn.request("GET", auxiliar_endpoint + w2 + parameters)
                         r1 = conn.getresponse()
                         data1 = r1.read().decode("utf-8")
-                        console = json.loads(data1)
+                        auxiliar_console = json.loads(data1)
+                        identificator = auxiliar_console[0]
+                        id_gene = identificator['id']
+
+                        endpoint = 'sequence/id/'
+                        conn.request("GET", endpoint + id_gene + parameters)
+                        r2 = conn.getresponse()
+                        data2 = r2.read().decode("utf-8")
+                        console = json.loads(data2)
                         sequence = Seq(console["seq"])
 
                         output = f'''<!DOCTYPE html>
