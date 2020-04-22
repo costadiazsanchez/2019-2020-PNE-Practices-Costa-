@@ -1,0 +1,225 @@
+-------MEDIUM LEVEL---------
+
+* Test 1. (Index)
+
+In this part, I show the index of the basic and medium levels.
+
+- Input:
+
+http://localhost:8080/
+
+- Output:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome!!</title>
+
+</head>
+<body style="background-color: lightyellow;">
+<h1>Browsing Human and Vertebrates genome</h1>
+<h1>BASIC level services</h1>
+<form action="listSpecies" method="get">
+      1) List of species in the genome database<br>
+    <br>
+    Limit: <br>
+      <input type="text" name="limit">
+    <br>
+    <br>
+      <input type="submit" value="SEND">
+    <br>
+    <br>
+    </form><form action = 'karyotype' method = 'get'>
+    2) Information about the karyotype:<br>
+    <br>
+    Select the species: <br>
+      <input type="text" name="specie">
+    <br>
+    <br>
+      <input type="submit" value="SEND">
+    <br>
+    <br>
+
+</form><form action = 'chromosomeLength' method = 'get'>
+    3) Chromosome Length<br>
+    <br>
+    Select the species: <br>
+      <input type="text" name="specie">
+    <br>
+    <br>
+    Select a chromosome: <br>
+      <input type="text" name="chromo">
+    <br>
+    <br>
+      <input type="submit" value="SEND">
+    <br>
+    <br>
+</form><h1>MEDIUM level services</h1><form action = 'geneSeq' method = 'get'>
+    4) Gene sequence:<br>
+    <br>
+    Select the gene: <br>
+      <input type="text" name="gene">
+    <br>
+    <br>
+      <input type="submit" value="SEND">
+    <br>
+    <br>
+</form><form action = 'geneInfo' method = 'get'>
+    5) Gene information:<br>
+    <br>
+    Select the gene: <br>
+      <input type="text" name="gene">
+    <br>
+    <br>
+      <input type="submit" value="SEND">
+    <br>
+    <br>
+</form><form action = 'geneCalc' method = 'get'>
+    6) Gene calculation:<br>
+    <br>
+    Select the gene: <br>
+      <input type="text" name="gene">
+    <br>
+    <br>
+      <input type="submit" value="SEND">
+    <br>
+    <br>
+</form><form action = 'geneList' method = 'get'>
+    7) Gene List<br>
+    <br>
+    Select the chromosome: <br>
+      <input type="text" name="chromo">
+    <br>
+    <br>
+    Starts at: <br>
+      <input type="text" name="start">
+    <br>
+    <br>
+    Ends at: <br>
+    <input type="text" name="end">
+    <br>
+    <br>
+      <input type="submit" value="SEND">
+    <br>
+    <br>
+
+</form>
+</body>
+</html>
+
+* Test 2. (Gene Sequence)
+
+In this part, the output is the full sequence of the given gene.
+
+- Input:
+
+http://localhost:8080/
+
+- Output:
+
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+<meta charset = "utf-8"
+ <title> SEQUENCE GENE </title>
+ </head>
+ <body style="background-color: lightblue;">
+<p> The sequence of gene FRAT1 is:  </p><textarea rows = "100" "cols = 100"> CGGCTCCCGCGGCTGCAGGCGCGCGGCTAGAGTGCCTGGCGGGCTCCGGCTTCCGCGTCCGCCCCGGCCCCGGTCCAGACTTAGTCTTCAGCTCCGCGCCCGCTCCGCCGCGGCCCACCGCGCCCGCCGGCAGCCGAGCCCCCAGCGACGCCCGCACAGCTCCGGGTGCCCAGACAGGGGGCCATGCCGTGCCGGAGGGAGGAGGAAGAGGAAGCCGGCGAGGAGGCGGAGGGGGAGGAAGAGGAGGAGGACAGCTTCCTCCTACTGCAGCAGTCAGTGGCGCTGGGCAGCTCGGGCGAGGTGGACCGGCTGGTGGCCCAGATCGGCGAGACGCTGCAGCTGGACGCGGCGCAGCACAGCCCGGCCTCGCCGTGCGGGCCCCCGGGGGCGCCGCTGCGGGCCCCGGGGCCCCTGGCTGCGGCGGTGCCGGCGGACAAGGCCAGGTCCCCGGCGGTGCCGCTGCTGCTGCCGCCCGCGTTGGCGGAGACTGTGGGCCCGGCGCCCCCTGGGGTCCTGCGCTGCGCCCTGGGGGACCGCGGCCGCGTGCGGGGCCGCGCTGCGCCCTACTGCGTGGCCGAGCTCGCCACAGGCCCCAGCGCGCTGTCCCCACTGCCCCCTCAGGCCGACCTTGATGGGCCTCCGGGAGCTGGCAAGCAGGGCATCCCGCAGCCGCTGTCGGGTCCGTGCCGGCGAGGATGGCTCCGGGGCGCCGCCGCCTCCCGCCGCCTGCAGCAGCGACGCGGGTCCCAACCAGAAACCCGCACAGGCGACGACGACCCGCACCGGCTTCTGCAGCAGCTAGTGCTCTCTGGAAACCTCATCAAGGAGGCCGTGCGAAGGCTTCATTCGCGACGGCTGCAGTTACGTGCAAAGCTTCCCCAACGCCCGCTCCTGGGACCTCTGTCGGCCCCGGTGCATGAACCCCCTTCGCCTCGCAGCCCTCGCGCGGCCTGCAGTGACCCTGGCGCCTCCGGGAGGGCGCAGCTCAGAACTGGCGACGGCGTTCTTGTGCCTGGCAGCTAACACGCCCGGGGTGGCCACAGCGCCAGCCTCAGACTGGAGGGCAAGGGGTTCCCTTGAGGGCTGCAGTTCTACTCAGGCTGGTGGAGAACTCTGGCTTTTGGAAGCGAGAGTAAAAAGCTAATGACGAGGAACCGAAAAATCGCGAGTGTTTCGCGGGTAACTGGGGTTGAGGGCCAAAATATTTGGAATGAAGGACTTTGGCCCTATTTAAGGCAGATTTTACAGAGCGCACCTCAAACGTACAAGTCAGTAGGACTCCTTATTTGGCGTGACCCGACCTGGCCGCGGAGCCTGCATTTCCTCGCAGCCTCTCAGTGCCCTCCAGCCCCGCGACCATGTGGCCACAATCCACGCTTCTCCGGATCGCGGTGCGCCGGAACCACGGAGGATGATGCCAGTTACTTGCTTTACCTTTTCAGGGCTGGCTCCTGATCCACTTTGGGGGAGGAGAACATGAGTAGATAATTTCAGGGTGCAGCCCAATCTGCCAGACTTAAAAAAACCATCTTGTGTCTTTGGAGGTGCTGCTTAATACCAAACATGCGGTGCCATGAAGGGACCCTTTGGGGGTTGAATAGGAGTTAACCCCTGCGCTCTCTTTGCAACTGTCTCTCTTCTCAGAGTGGTGGGGGAAGGCTGTACGACACGGGTGGGGAAAGGAGGTGGGGGCGGGGAGTATTGAATGGTGGTGGAAGGGTAGAGAGGCGCGGAGTGAACCCCACGCCCTGTCTAAAGTGTATTTTCAGAGCCGGCCCGCCTCTCCTCGGTTCAAGGTCACTGTTTCCTGGGCACGCACTGGGTTGCGGGACAGAGTAGCCAGGTTCTGCCGGTGCTCGGAGAAGAGCGCAGTGTTTTGCAAGTGCTGGAGTCTCCTGAGGACACGCGCGTCGCCGCCACCGCGGGTGTGGGAAAGCGCGGACGTGCTGGGCGGCTGTGCTTCGGTAGGCGACCACCGCCCCTGGCCGCGCTCCGGGCTTTCACGGAAACTCCCGAGACCGGGCCCTGGGTTCCTCCTCTCCTACTCGGCTCTGCAGTCCTACTCAAGCGGGTGGCTCTGGGATCCTGGGGGCCTGGGTTGGGGGCTAGGGAGACGCCATGTGATGGACACTCCAGGGACACACAGCCTAGCACAGCAGCTTATAATGGGCTCTCCGGGGCCATTTGCAATAACAGCTGCAATTCCCTGGATAGACGAGTTGATTTCCTCCCTCTGCCCCTCCCCCAGCCATGCCAGCTGGCCTTTGTAAGTGCAGGAAACCGAGTAGAAAATGTGACCCTCCAAATGGAGAAGCTGCAGGCTTTGCCATTGTGAACCATGGTGAAGTGCTTGGAACATACTGTTCACTCACTCTAAAGGCGCTGAGACTGTGCTGTTGTTCTCGTTTTTATAGTCAATGGCTTGTTCATCATCCAGATGTGGCTACTGACATATCTACACTTCGCACCGGAGTGTCTGGAATTGTGGCTATCCTGATTATAGGATTTTAACTTAACTGAAATGCCTGCTTTGAATAAATGTGTTGGGTTTTTTGTTTGGTTTTATTTTATACTTGCCATCAGTGAAAAAGATGTACAGAACACATTTCTCTGATCTCCATAAACATGAAAACACTTGAAATCTC </textarea><a href="/">Main page</a>
+      </body>
+      </html>
+
+
+
+
+* Test 3. (Gene Information)
+
+In this part, the output is the information of the given gene. (ID, Start position, End Position and Length)
+
+- Input:
+
+http://localhost:8080/geneInfo?gene=FRAT1
+
+- Output:
+
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+<meta charset = "utf-8"
+<title> INFO ABOUT GENE FRAT1 </title>
+</head>
+<body style="background-color: lightblue;"> <p> The gene is on chromosome 10</p><p> The identificator is ENSG00000165879</p><p> The gene start on position 97319271</p><p> The gene ends on position 97321915</p><p> The length of the gene is 2644 </p><a href="/">Main page</a>
+</body>
+</html>
+
+*Test 4. (Gene calculations)
+
+Here, the output should be some calculations about the given gene (NUMBER OF EACH BASES, PERCENTAGE OF EACH BASE
+
+- Input:
+
+http://localhost:8080/geneCalc?gene=FRAT1
+
+- Output:
+
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+<meta charset = "utf-8"
+<title> CALCULATIONS ABOUT GENE FRAT1 </title>
+</head>
+<body style="background-color: lightblue;"> <p> The length of the gene is 2645</p>
+A: 477 (18.034026465028354%)
+C: 799 (30.207939508506616%)
+G: 849 (32.098298676748584%)
+T: 520 (19.659735349716446%)
+<a href="/">Main page</a>
+</body>
+</html>
+
+*Test 5. (Gene List)
+
+In this part, the output is the list of genes between a given start and end positions in a given chromosome.
+
+- Input:
+
+http://localhost:8080/geneList?chromo=1&start=0&end=30000
+
+- Output:
+
+<!DOCTYPE html>
+<html lang = "en">
+<head>
+<meta charset = "utf-8"
+<title> GENE LIST OF THE CHROMOSOME 1 that starts at 0 and ends at 30000 </title>
+</head>
+<body style="background-color: lightblue;"> <p> - DDX11L1</p><p> - WASH7P</p><p> - MIR6859-1</p><p> - MIR1302-2HG</p><a href="/">Main page</a>
+ </body>
+ </html>
+
+*Test 6. (Value errors)
+
+If we put the name of a non-existent gene or we send any blank message, the output is ERROR.
+
+- Input:
+
+http://localhost:8080/geneSeq?gene=coronavirus
+
+- Output:
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Error</title>
+    <title></title>
+</head>
+<body style="background-color: red;">
+  <h1>ERROR</h1>
+<p>Welcome to the DATA ERROR server.</p>
+  <p>If you are here is because the data you have entered does not exist in the ensembl.</p>
+  <p>Sorry!!!!!!!!</p>
+<a href="/">Main page</a>
+</body>
+</html>
+
