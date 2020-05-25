@@ -31,7 +31,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
         # Command 2 is used to delete the interrogation mark.
         command2 = command[1].split('?')
 
-        # This is the content before interrogation mark.
+        # first_w is the content before question mark.
         first_w = command2[0]
         code = 404
 
@@ -42,18 +42,19 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
 
             else:
                 try:
-                    if first_w in '/listSpecies':  # /info/species?content-type=application/json
+                    if first_w in '/listSpecies':
                         endpoint = 'info/species'
-                        # The content after the interrogation mark.
+                        # after_int is the content after the question mark.
                         after_int = command2[1]
-                        w1, w2 = after_int.split('=')
+                        # I have used w1 and w2 to separate the key and the value separated by an equal mark.
+                        w1, w2 = after_int.split('=')      # w1 -> limit and w2 -> value of the limit
                         conn.request("GET", endpoint + parameters)
                         r1 = conn.getresponse()
                         data1 = r1.read().decode("utf-8")
                         console = json.loads(data1)
                         lim_species = console['species']
 
-                        if w2 == '':
+                        if w2 == '':       # If there are no limit, it will display all the species.
                             output = f'''<!DOCTYPE html>
                                    <html lang = "en">            
                                    <head>  
@@ -68,7 +69,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                                 code = 200
 
                         else:
-                            if len(lim_species) >= int(w2):
+                            if len(lim_species) >= int(w2):   # If there are limit, it will display limited species.
                                 output = f'''<!DOCTYPE html>
                                            <html lang = "en">            
                                            <head>  
@@ -85,16 +86,18 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                                         output += f'<p> - {element["display_name"]}</p>'
                                         count = count + 1
                                         code = 200
-                            else:
+                            else:       # If any of the other parts are well-done, it will display the error message.
                                 output = Path('errorf.html').read_text()
 
                         output += '''<a href="/">Main page</a>
                                       </body>
                                       </html>'''
 
-                    elif first_w in "/chromosomeLength":  # /info/assembly/homo_sapiens?content-type=application/json
+                    elif first_w in "/chromosomeLength":
                         endpoint = 'info/assembly/'
                         after_int = command2[1]
+                        # In this part, the endpoint is formed by an addition mark, and two equal marks.
+                        # We have to separate them to work easily.
                         v1, v2 = after_int.split('&')
                         w1, w2 = v1.split('=')
                         x1, x2 = v2.split('=')
@@ -106,9 +109,9 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                         chromo_data = console['top_level_region']
                         output = ''
 
-                        if x2 == '':
+                        if x2 == '':             # If there is a blank space, error messagge.
                             output = Path('errorf.html').read_text()
-                        elif w2 == '':
+                        elif w2 == '':           # If there is a blank space, error messagge.
                             output = Path('errorf.html').read_text()
                         else:
                             for element in chromo_data:
@@ -125,10 +128,10 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                                     </body></html>'''
                             code = 200
 
-                    elif first_w in '/karyotype':  # /info/assembly/homo_sapiens?content-type=application/json
+                    elif first_w in '/karyotype':
                         endpoint = 'info/assembly/'
                         after_int = command2[1]
-                        w1, w2 = after_int.split('=')
+                        w1, w2 = after_int.split('=')       # w1 -> specie and w2 -> value of specie
                         conn.request("GET", endpoint + w2 + parameters)
                         r1 = conn.getresponse()
                         data1 = r1.read().decode("utf-8")
@@ -151,12 +154,14 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                                       </html>'''
                         code = 200
 
+                    # HERE, THE MEDIUM PART STARTS
+
                     try:
 
-                        if first_w in '/geneSeq':  # /sequence/id/ENSG00000157764?content-type=text/plain
+                        if first_w in '/geneSeq':
                             auxiliar_endpoint = 'xrefs/symbol/homo_sapiens/'
                             after_int = command2[1]
-                            w1, w2 = after_int.split('=')
+                            w1, w2 = after_int.split('=')        # w1 -> gene and w2 -> gene value (FRAT1, for example)
                             conn.request("GET", auxiliar_endpoint + w2 + parameters)
                             r1 = conn.getresponse()
                             data1 = r1.read().decode("utf-8")
@@ -169,8 +174,6 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                             r2 = conn.getresponse()
                             data2 = r2.read().decode("utf-8")
                             console = json.loads(data2)
-
-
                             output = f'''<!DOCTYPE html>
                                    <html lang = "en">            
                                    <head>  
@@ -186,10 +189,10 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                                           </body>
                                           </html>'''
 
-                        elif first_w in '/geneInfo':  # /lookup/id/ENSG00000157764?content-type=text/plain
+                        elif first_w in '/geneInfo':
                             auxiliar_endpoint = 'xrefs/symbol/homo_sapiens/'
                             after_int = command2[1]
-                            w1, w2 = after_int.split('=')
+                            w1, w2 = after_int.split('=')     # w1 -> gene and w2 -> gene value (FRAT1, for example)
                             conn.request("GET", auxiliar_endpoint + w2 + parameters)
                             r1 = conn.getresponse()
                             data1 = r1.read().decode("utf-8")
@@ -219,10 +222,10 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                                          </body>
                                          </html>'''
 
-                        elif first_w in '/geneCalc':  # /sequence/id/ENSG00000157764?content-type=text/plain
+                        elif first_w in '/geneCalc':
                             auxiliar_endpoint = 'xrefs/symbol/homo_sapiens/'
                             after_int = command2[1]
-                            w1, w2 = after_int.split('=')
+                            w1, w2 = after_int.split('=')     # w1 -> gene and w2 -> gene value (FRAT1, for example)
                             conn.request("GET", auxiliar_endpoint + w2 + parameters)
                             r1 = conn.getresponse()
                             data1 = r1.read().decode("utf-8")
@@ -246,7 +249,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                                         <body style="background-color: lightblue;"> '''
                             output += f'<p> The length of the gene is {sequence.len()}</p>'
                             for element in BASES:
-                                output += f'\n{element}: {sequence.count_base(element)} ({sequence.count_base(element) * 100 / sequence.len()}%)'
+                                output += f'\n{element}: {sequence.count_base(element)} ({sequence.count_base(element) *100 / sequence.len()}%)'
                             output += '''\n<a href="/">Main page</a>
                                          </body>
                                          </html>'''
@@ -258,8 +261,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                             w1, w2 = v1.split('=')  # w1 = chromo and w2 = value(chromo)
                             t1, t2 = v2.split("=")  # t1 = start and t2 = value (start)
                             z1, z2 = v3.split("=")  # z1 = ends and z2 = value (ends)
-                            conn.request("GET",
-                                         endpoint + w2 + ':' + t2 + '-' + z2 + '?feature=gene;content-type=application/json')
+                            conn.request("GET", endpoint + w2 + ':' + t2 + '-' + z2 + '?feature=gene;content-type=application/json')
                             r1 = conn.getresponse()
                             data1 = r1.read().decode("utf-8")
                             console = json.loads(data1)
@@ -276,6 +278,8 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                             output += '''<a href="/">Main page</a>
                                          </body>
                                          </html>'''
+
+                    # Here, the exceptions appears, in case of error, the error message will be displayed.
                     except IndexError:
                         output = Path('errorf.html').read_text()
 
@@ -318,3 +322,4 @@ with socketserver.TCPServer(("", PORT), Handler) as httpd:
         print("")
         print("Stopped by the user")
         httpd.server_close()
+
